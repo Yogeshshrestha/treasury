@@ -1,0 +1,29 @@
+.para-text {
+    color: #575151 !important;
+    line-height: 1.5;
+    text-align: justify;
+    font-weight: 400;
+    font: 'Roboto', sans-serif;
+}
+
+.link-text { 
+    text-decoration: underline;
+    color: #575151;
+}
+
+.label-text {
+    font-weight: 300;
+    font: 'Roboto', sans-serif;
+    text-align: justify;
+    line-height: 1.5;
+    color: #383D38;
+}
+
+.black-text {
+    color: #000 !important;
+}
+
+.black-light-text {
+    color: #575151 !important;
+}
+
