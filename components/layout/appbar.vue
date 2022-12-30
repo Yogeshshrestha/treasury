@@ -20,10 +20,12 @@
                 </v-col>
                 <v-spacer cols="4"></v-spacer>
                 <v-col cols="4" align="right">
-                    <ReusableConnectBtn />
+                    <ReusableConnectedBtn v-if="walletAddr" />
+                    <ReusableConnectBtn v-else />
                 </v-col>
             </v-row>
         </v-app-bar>
+        <WalletChoose />
     </div>
 </template>
 
@@ -56,11 +58,26 @@ export default {
                 }
 
             ],
-            // miniVariant: false,
-            // right: true,
+        }
+    }, computed: {
+        profile() {
+            return this.$store.state.wallet.profile;
+        },
+        walletAddr() {
+            return this.$store.state.wallet.walletAddr;
+        },
+        walletType() {
+            return this.$store.state.wallet.walletType;
+        },
+    },
+    mounted() {
+        if (this.$auth.strategy.token.get()) {
+            this.$store.dispatch("wallet/onReload");
+        } else {
+            this.$store.dispatch("wallet/logout");
         }
     }
-}
+};
 </script>
 
 <style lang="css">

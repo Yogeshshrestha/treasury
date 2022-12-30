@@ -30,12 +30,36 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     "@nuxtjs/vuetify",
+    "@nuxtjs/dotenv",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
-
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  modules: ["@nuxtjs/auth-next", "@nuxtjs/axios", "@nuxtjs/toast"],
+  axios: {
+    baseURL: process.env.APT_URL,
+  },
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: "token",
+          required: true,
+          maxAge: 23 * 60 * 60,
+        },
+        user: {
+          property: false,
+          autoFetch: false,
+        },
+        // endpoints: {
+        //   login: { url: "/login", methods: "post" },
+        //   logout: { url: "/logout", method: "get" },
+        //   user: { url: "/profile", method: "get" },
+        // },
+      },
+    },
+    redirect: false,
+  },
+  // Vuetify module configuration: https://go.nuxtjs.Sdev/config-vuetify
   vuetify: {
     customVariables: ["~/assets/variables.scss"],
     theme: {
@@ -55,5 +79,23 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    loaders: {
+      transpile: ["axios"],
+      vue: {
+        transformAssetUrls: {
+          audio: "src",
+        },
+      },
+    },
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: "file-loader",
+        options: {
+          name: "[path][name].[ext]",
+        },
+      });
+    },
+  },
 };

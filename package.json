@@ -2,6 +2,7 @@
   "name": "treasury",
   "version": "1.0.0",
   "private": true,
+  "module": "type",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -9,8 +10,15 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/auth-next": "^5.0.0-1667386184.dfbbb54",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/toast": "^3.3.1",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
+    "toast": "^0.5.4",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10",
