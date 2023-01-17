@@ -50,11 +50,11 @@ export default {
           property: false,
           autoFetch: false,
         },
-        // endpoints: {
-        //   login: { url: "/login", methods: "post" },
-        //   logout: { url: "/logout", method: "get" },
-        //   user: { url: "/profile", method: "get" },
-        // },
+        endpoints: {
+          login: { url: "/login", methods: "post" },
+          logout: { url: "/logout", method: "get" },
+          user: { url: "/profile", method: "get" },
+        },
       },
     },
     redirect: false,
